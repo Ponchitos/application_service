@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  dev_postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "developer"
+      POSTGRES_PASSWORD: "developer"
+      POSTGRES_DB: "dev_app_db"
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+volumes:
+  database-data:

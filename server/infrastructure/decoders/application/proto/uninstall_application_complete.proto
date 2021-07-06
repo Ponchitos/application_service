@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+message UninstallApplicationCompleteRequest {
+  string VersionUUID      = 1;
+  string EnterpriseID     = 2;
+  string ApplicationUUID  = 3;
+}

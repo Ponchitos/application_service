@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+enum Statuses {
+  INSTALL = 0;
+  UNINSTALL = 1;
+  UPDATED = 2;
+}
+
+message ChangeApplicationStatusRequest {
+  string VersionUUID  = 1;
+  string EnterpriseID = 2;
+  Statuses Status     = 3;
+}
